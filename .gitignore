@@ -1,0 +1,8 @@
+.idea*
+venv/
+__pycache__/
+client/__pycache__/
+server/__pycache__/
+localdata
+users.json
+tasks.json
