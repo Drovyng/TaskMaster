@@ -6,3 +6,6 @@ server/__pycache__/
 localdata
 users.json
 tasks.json
+build/
+dist/
+client.spec

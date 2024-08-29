@@ -8,6 +8,10 @@ datas = {
     "login": "",
     "password": ""
 }
+serverIp = ""
+
+with open("serverIp") as file:
+    serverIp = file.read()
 
 def kryptPassword(normal:str) -> str:
     return normal

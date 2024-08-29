@@ -1,0 +1,1 @@
+pyinstaller -F -p ./ server/main.py -n server

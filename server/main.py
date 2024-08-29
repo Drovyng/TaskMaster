@@ -1,8 +1,12 @@
+import threading
+
 from defined import *
 import socket, select, connection
 
+serverIp = ""
+
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind(("localhost", 25601))
+server.bind((serverIp, 25601))
 server.listen()
 
 sockets_list = [server]

@@ -10,7 +10,7 @@ def sendServer(data: bytes) -> bytes | None:
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         client.settimeout(5)
-        client.connect(("localhost", 25601))
+        client.connect((storage.serverIp, 25601))
         client.send(data)
         data = client.recv(65536)
         client.close()

@@ -1,0 +1,1 @@
+pyinstaller -F -p ./ -n client client/main.py
