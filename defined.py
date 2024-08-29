@@ -4,18 +4,19 @@ import json
 
 Task = (
     int,                # №
-    str,                # Название
+    str,                # Задача
     str,                # Описание
     str,                # Статус
-    int,                # Сложность
-    datetime.datetime,  # Срок
-    list[int]           # Назначенные
+    str,                # Сложность
+    str,                # Срок
+    list[int]           # Исполнители
 )
 
 User = (
     int,                # №
     str,                # Никнейм
-    int                 # Роль
+    int,                # Роль
+    str,                # Логин
 )
 UserDatabase = (
     int,                # №
@@ -31,10 +32,26 @@ SendData = (
     str                 # Данные в Json
 )
 SendDataTypes = [
-    0,          # Логин
-    1,          # Список Пользователей
-    2,          # Список Задач
+    0,                  # Логин
+    1,                  # Список Пользователей
+    2,                  # Список Задач
+    3,                  # Регистрация
+    4,                  # Токен Регистрации Создать
+    5,                  # Мой Аккаунт
+    6,                  # Новая Задача
+    7,                  # Получить Чат
+    8,                  # Отправить сообщение
 ]
+Chat = list[str]
+ChatKey = (int, int)    # 2 айди пользователя
+RoleTypes = [
+    "Работник",
+    "Заместитель",
+    "Менеджер",
+    "Директор"
+]
+
+
 def encodeData(data: SendData) -> bytes:
     return encodings.utf_8.encode(json.dumps(data, ensure_ascii=False))[0]
 

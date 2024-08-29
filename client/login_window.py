@@ -13,7 +13,7 @@ import storage
 
 
 class LoginWindow(QWidget):
-    def __init__(self, login: str, password: str):
+    def __init__(self):
         super().__init__()
         self.setWindowTitle("Авторизация")
         self.resize(300, 150)
@@ -35,11 +35,6 @@ class LoginWindow(QWidget):
         self.login_button.clicked.connect(self.login)
         self.status_label = QLabel(" ")
         self.status_label.setAlignment(Qt.AlignCenter)  # Центрируем текст
-
-        if len(login) > 0 and len(password) > 0:
-            self.login_inputsetText(login)
-            self.password_input.setText(password)
-            self.login()
 
         # Настраиваем шрифт для всех меток
         font = QFont()
@@ -68,6 +63,11 @@ class LoginWindow(QWidget):
         layout.addWidget(self.login_button)
         self.setLayout(layout)
 
+    def autologin(self, login: str, password: str):
+        if len(login) > 0 and len(password) > 0:
+            self.login_input.setText(login)
+            self.password_input.setText(password)
+
     def login(self):
         self.status_label.setStyleSheet("")
         # Делаем поля неактивными
@@ -77,8 +77,6 @@ class LoginWindow(QWidget):
 
         storage.datas["login"] = self.login_input.text()
         storage.datas["password"] = self.password_input.text()
-
-        print(storage.datas)
 
         # Отображаем строку состояния
         self.status_label.setText("подключение...")

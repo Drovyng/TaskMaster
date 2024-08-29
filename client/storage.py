@@ -1,7 +1,7 @@
 import base64
 import encodings.utf_8
+import json
 
-from defined import *
 from cryptography.fernet import Fernet
 
 datas = {
@@ -29,8 +29,8 @@ def load():
     try:
         with open("localdata", "r") as file:
             data = json.load(file)
-            data["password"] = dekryptPassword(datas["password"])
-            datas = data
+            datas = data.copy()
+            datas["password"] = dekryptPassword(data["password"])
             file.close()
     except: ...
 
